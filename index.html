@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Emoji Qn Generator</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Roboto&display=swap" rel="stylesheet">
+    <!-- <meta name="description" content="Our first page">
+    <meta name="keywords" content="html tutorial template"> -->
+    <script>
+      async function generateQn(emoji) {
+        console.log('emoji is', emoji)
+        fetch('questions.json')
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            let qns = data[emoji];
+            console.log('qns is', qns);
+            let qn = qns[Math.floor(Math.random() * qns.length)]
+            document.getElementById('question-container').innerText = qn;
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container"> 
+      <div id="question-container">Click an emoji to generate a question!</div>
+      <div class="buttons-container">
+        <div class="button" onclick="generateQn('🥱')">🥱</div>
+        <div class="button" onclick="generateQn('🤩')">🤩</div>
+        <div class="button" onclick="generateQn('🤔')">🤔</div>
+      </div>
+    </div>
+  </body>
+</html>
