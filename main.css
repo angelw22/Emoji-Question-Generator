@@ -1,5 +1,7 @@
 body {
+  height: 100vh;
   font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(177deg, rgba(252,237,237,1) 0%, rgba(234,244,255,1) 100%);
 }
 
 #question-container {
